@@ -36,7 +36,7 @@ const personalInfo = {
   github: "https://github.com/ngophuc29",
   linkedin: "https://www.linkedin.com/in/phuc-ngo-2685493a5/?trk=opento_sprofile_topcard", // Add your linkedin
   about: "Frontend Developer with hands-on experience in React.js and Next.js, seeking an opportunity to contribute to real-world product development. Strong focus on building scalable UI systems, responsive design, performance optimization, and SEO-friendly applications. Passionate about clean code, user experience, and continuous growth toward a professional Frontend Engineer role.",
-  avatar: "https://chiragchrg.netlify.app/_astro/ChiragChrg_Avatar_180.gQjQL-YK_1pBsz3.webp" // User's updated avatar
+  avatar: "/avatardeptrai.jpg" // Use avatar from public folder
 };
 
 const skills = [
@@ -175,7 +175,7 @@ const projects = [
       { name: "JWT", icon: "https://jwt.io/img/pic_logo.svg" }
     ],
     github: "https://github.com/ngophuc29/ZaloApp.git",
-    live: "#"
+    live: "https://chat.zalo.me/"
   },
   {
     id: 3,
@@ -201,9 +201,9 @@ const projects = [
       { name: "Cloudinary", icon: "https://cdn.simpleicons.org/cloudinary/3448C5" },
       { name: "JWT", icon: "https://jwt.io/img/pic_logo.svg" }
     ],
-    github: "#", // Điền link mã nguồn
-    overview: "#", // Điền link ảnh tổng quát
-    live: "#" // Điền link demo
+    github: "https://github.com/ngophuc29/KT-TKPM_PROJECT", // Điền link mã nguồn
+    overview: "https://kt-tkpm-project.vercel.app", // Điền link ảnh tổng quát
+    live: "https://kt-tkpm-project.vercel.app" // Điền link demo
   }
 ];
 
