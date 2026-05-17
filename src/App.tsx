@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import {
   
   Mail,
@@ -7,20 +7,11 @@ import {
   Menu,
   X,
   Moon,
-  Sun,
-  Code2,
-  Terminal,
-  Database,
+   
   Globe,
   Layout,
-  Server,
   Send,
-  Smartphone,
-  Layers,
-  Box,
-  Workflow,
-  Cloud,
-  Code
+ 
 } from 'lucide-react';
 
 import { FaLinkedin } from "react-icons/fa";
