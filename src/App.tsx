@@ -34,95 +34,86 @@ const skills = [
   {
     category: "Web & Programming",
     items: [
-      { name: "HTML", icon: "https://cdn.simpleicons.org/html5/E34F26" },
-      { name: "CSS", icon: "https://cdn.simpleicons.org/css/E34F26" },
-      { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/F7DF1E" },
-      { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
-
+      { name: "HTML", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "#E34F26" },
+      { name: "CSS", icon: "https://cdn.simpleicons.org/css/1572B6", color: "#1572B6" },
+      { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/F7DF1E", color: "#F7DF1E" },
+      { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6", color: "#3178C6" },
     ]
   },
   {
     category: "Frontend",
     items: [
-      { name: "React.js", icon: "https://cdn.simpleicons.org/react/61DAFB" },
-      { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/white" },
-
-      { name: "Tailwind CSS", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
-
-      { name: "Framer Motion", icon: "https://cdn.simpleicons.org/framer/0055FF" },
+      { name: "React.js", icon: "https://cdn.simpleicons.org/react/61DAFB", color: "#61DAFB" },
+      { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/white", color: "#888888" },
+      { name: "Tailwind CSS", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4", color: "#06B6D4" },
+      { name: "Framer Motion", icon: "https://cdn.simpleicons.org/framer/0055FF", color: "#0055FF" },
     ]
   },
   {
     category: "Backend & APIs",
     items: [
-      { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
-      { name: "Express.js", icon: "https://cdn.simpleicons.org/express/white" },
-      { name: "REST API", icon: "https://cdn.simpleicons.org/postman/FF6C37" },
-      { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase/FFCA28" },
-      { name: "Google Auth", icon: "https://cdn.simpleicons.org/google/4285F4" },
+      { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933", color: "#339933" },
+      { name: "Express.js", icon: "https://cdn.simpleicons.org/express/white", color: "#888888" },
+      { name: "REST API", icon: "https://cdn.simpleicons.org/postman/FF6C37", color: "#FF6C37" },
+      { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase/FFCA28", color: "#FFCA28" },
+      { name: "Google Auth", icon: "https://cdn.simpleicons.org/google/4285F4", color: "#4285F4" },
     ]
   },
   {
     category: "Databases & Storage",
     items: [
-      { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/47A248" },
-      { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/4479A1" },
-      { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql/4169E1" },
-      { name: "Firestore", icon: "https://cdn.simpleicons.org/firebase/FFCA28" },
-
-      { name: "Redis", icon: "https://cdn.simpleicons.org/redis/DC382D" },
-      
+      { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/47A248", color: "#47A248" },
+      { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/4479A1", color: "#4479A1" },
+      { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql/4169E1", color: "#4169E1" },
+      { name: "Firestore", icon: "https://cdn.simpleicons.org/firebase/FFCA28", color: "#FFCA28" },
+      { name: "Redis", icon: "https://cdn.simpleicons.org/redis/DC382D", color: "#DC382D" },
     ]
   },
   {
     category: "State & Events",
     items: [
-      { name: "Redux", icon: "https://cdn.simpleicons.org/redux/764ABC" },
-      { name: "Zustand", icon: "https://raw.githubusercontent.com/pmndrs/zustand/main/docs/bear.png" },
-
-      { name: "TanStack Query", icon: "https://cdn.simpleicons.org/reactquery/FF4154" },
-      { name: "Socket.io", icon: "https://cdn.simpleicons.org/socketdotio/white" },
+      { name: "Redux", icon: "https://cdn.simpleicons.org/redux/764ABC", color: "#764ABC" },
+      { name: "Zustand", icon: "https://raw.githubusercontent.com/pmndrs/zustand/main/docs/bear.png", color: "#4c3e3d" },
+      { name: "TanStack Query", icon: "https://cdn.simpleicons.org/reactquery/FF4154", color: "#FF4154" },
+      { name: "Socket.io", icon: "https://cdn.simpleicons.org/socketdotio/white", color: "#010101" },
     ]
   },
   {
     category: "Cloud & DevOps",
     items: [
-      { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED" },
-      { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase/FFCA28" },
-      { name: "Google Cloud", icon: "https://cdn.simpleicons.org/googlecloud/4285F4" },
-      { name: "Netlify", icon: "https://cdn.simpleicons.org/netlify/00C7B7" },
-      { name: "Vercel", icon: "https://cdn.simpleicons.org/vercel/white" },
+      { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED", color: "#2496ED" },
+      { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase/FFCA28", color: "#FFCA28" },
+      { name: "Google Cloud", icon: "https://cdn.simpleicons.org/googlecloud/4285F4", color: "#4285F4" },
+      { name: "Netlify", icon: "https://cdn.simpleicons.org/netlify/00C7B7", color: "#00C7B7" },
+      { name: "Vercel", icon: "https://cdn.simpleicons.org/vercel/white", color: "#888888" },
     ]
   },
   {
     category: "Tooling & Observability",
     items: [
-      { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032" },
-      { name: "GitHub", icon: "https://cdn.simpleicons.org/github/white" },
-      { name: "npm", icon: "https://cdn.simpleicons.org/npm/CB3837" },
-
-      { name: "Vite", icon: "https://cdn.simpleicons.org/vite/646CFF" },
-
-      { name: "Postman", icon: "https://cdn.simpleicons.org/postman/FF6C37" },
-      { name: "Swagger UI", icon: "https://cdn.simpleicons.org/swagger/85EA2D" },
-
+      { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032", color: "#F05032" },
+      { name: "GitHub", icon: "https://cdn.simpleicons.org/github/white", color: "#181717" },
+      { name: "npm", icon: "https://cdn.simpleicons.org/npm/CB3837", color: "#CB3837" },
+      { name: "Vite", icon: "https://cdn.simpleicons.org/vite/646CFF", color: "#646CFF" },
+      { name: "Postman", icon: "https://cdn.simpleicons.org/postman/FF6C37", color: "#FF6C37" },
+      { name: "Swagger UI", icon: "https://cdn.simpleicons.org/swagger/85EA2D", color: "#85EA2D" },
     ]
   },
   {
     category: "Config & Templating",
     items: [
-      { name: "YAML", icon: "https://cdn.simpleicons.org/yaml/white" },
-      { name: "JSON", icon: "https://cdn.simpleicons.org/json/white" },
-      { name: "Markdown", icon: "https://cdn.simpleicons.org/markdown/white" },
-      { name: "FreeMarker", icon: "https://cdn.simpleicons.org/apache/D22128" },
+      { name: "YAML", icon: "https://cdn.simpleicons.org/yaml/white", color: "#cb171e" },
+      { name: "JSON", icon: "https://cdn.simpleicons.org/json/white", color: "#292929" },
+      { name: "Markdown", icon: "https://cdn.simpleicons.org/markdown/white", color: "#000000" },
+      { name: "FreeMarker", icon: "https://cdn.simpleicons.org/apache/D22128", color: "#D22128" },
     ]
   },
   {
     category: "IDEs & Design",
     items: [
-      { name: "VS Code", icon: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEhUSExMVExMXFRcVEhYVFxISGBUYGBgXGhUVFRMYHSggGBolHRgVITEhJSkrLi4uFx8zODMvNygtLjcBCgoKDg0OGxAQGysmHyUrNzA3MjItLS04ListLTctMi8xMC0tLTcyKy0tLS01Ly03LTAvLS0tLS04LS82LS0vL//AABEIAKwBJgMBIgACEQEDEQH/xAAcAAADAAMBAQEAAAAAAAAAAAAAAQIDBgcEBQj/xAA2EAABAwMCBAUBBwMFAQAAAAABAAIRAyExEkEEE1FhBiJxgaEFBzIzQlKRsWKywRQjcsLw0f/EABoBAQADAQEBAAAAAAAAAAAAAAADBAUGAgH/xAAxEQABAwIDBgMIAwEAAAAAAAAAAQIDBBEFEiEiMUFRsfA0gcETMkJhcZGh0STh8SP/2gAMAwEAAhEDEQA/AO2veCIBWOkIMmyBTIv0VOdqsPW6AVa+LqqbgBBsVLTpzv0ScwuuEBOgzMWmVlqOBEC5S5ox7KWs03KAdG0zZKqJMi6bvNjbqm12mx9bICmPAEErCxpBBIVGkTfqqNQGw3QBVMi10UTGbJNbpufSyHDVj5QE1GkmRcLKXiIm8QpbU02OynlnO2UAqTYMmyqteIum5+qwSb5c79EBVIwINlicwzMWVubquPlMVQLeyAqo4EQMrHSEG9kNpltzsm46rD1ugFVE4urpuAEGxUtOmx+FNRsy6QBm9ojMoBBhmYtKy1XSIF1rtTxzwWosbV1nBLAXD1B3HcSvrfTuNp1W66b2vbvpNxOzmm7T2KkdDI1LuaqJ9CJs0blytcir9T1UbTNkqokyLpu8+NuqbX6bH4UZKUHiIm8LFTaQZNgnyib+6p1QOsN0AVTOLopGBeyTRpufhDhquPS6Amo0kyMLK54IibqRUDbHZSKRF/dAFIQZNk614i6bnarD5Sb5c79EBVJ0CDZYiwzMWmVTmarj5Vc0Y9kBfMHVCw8g9kICubNuqC3TfOyp1MASMqKZ1GCgGBr7Qg1NNkVDpxZUxgIk5QC5W/ukH6rYU6zMbTCyPYGiRlASfJ3lAbqvjZFPzZulUdpMBAPmxbonytN+ibaYIk5WNjyTBwgKDtVsboJ0WynUGm4RTGrN0AhT1X6o5u3spe8gwMLIaYid8oCSzTfKB5+0JMcXGDhOp5cWlABfptlPlTf3RTbqEnKg1CDG2EBQqardUFum+dlT2ACRleXiuOZTY6pWeGU2iXONgP2ydgN0RL6IfFW2qmWtVaGl73BjWglxJAAAuSScLkPjfxu7ipoUCW8OLE4dW7kbM/p336Dx+NPGD+McabJp8MDLWbvIw6p/huB6rVlsUtHk237+hjVlbn2I93UpjiCCMgyFt1Cs5jtTHFrhgtJB/cbLUFtZWrGl0VFMeRbKiobd9G8bvZ5a7eYP1thrvduD7Qtx+nfUKXEjVTqB3UDI9Wm4XIFdKq5pDmuLXDBaS0j0IVOfDY36s0X8F2DFJY9H7Sfn7nZ+bFvZBp6b9Fz76T40qMtXbzW/qHleP+rvj1W8fTuPbXaHsdqYfa4yCNiseelkh95NOZuU9XFP7i68j0g67YQXabZ3TqDTiyKY1XN1WLIcvVfqlzZt7KXvIMDCyOpgCd0BJZpvlA8/aEqbtRg4TqeXFpQAX6bZT5W/uim0OEnKgvMxtMIB/wCo7Jq+SOn8oQGFkzeY7yslXFvhN1QEQMqKY03KAqj3+VFSZtMdlVQasJseGiDlAVaNphYqczeY7o5ZmdplW94cIGUAq3b4TpYvnulT8uUnt1XCAl8zaY91mfEWieyTagAg5WNtMgycIB0s3+U6vb4TqHVYJUzpygKpxF891iEzvE91T2FxkYVmoIjfCAKsRbPZTR3n5SY3SZOE6nmxsgFVzbHZZGxG0qWO02K+V4g+sUuEpmtVMA/caI1PP6Wj/Oy+tarlsh8c5GpdTN9S+p0+GpmtWdpYOsy47NaNyei4v4u8U1eOqSfJRaf9umNv6ndXfxgbz5/E3iKtxtXmVDDRPLpg+WmO3U9Xb+kBfHW3S0iRbTt/QwqusWXZb7vUEIQrpQGtrK1RbWVLHxIpeAIQhSEQLcvs5rGa7NoY4DvJBI9o/Zaatv8As4/Fqnoxv8lVK9P47u+Jcw9f5LPPopvVLv8AKKubfCqodWEUzpsVzB1ZTIi8T3WFszvHum9hJkYWQ1ARG+EAVYi2eymjvPykxukyU6nmxsgJqzNsdllERtMKWODRByoNMzO0ygJh3f5Qs/OCEBHKi84Rq1WxukKhNjuqe3TceiAU6O8o5eq+EMGrKTnltggHzdo7I0ab5T5YzvlS1+qxQD+/2hGrTbO6H+XG6bW6rlALlTecrFxfHMYxz6hDGAS5xNgFkNQi3Rcr+0/j3nieRJFNjWkN2c5wkuPXMdoPUqxSwe3ky3K1VUJBHnsebxR4yq8Q4toudSojEEtc/u8jA/p/defw/wCLq/DOGpzq1L8zHuJjuxx+6fj+VryF0SU0SMyZdDmlq5lk9pm1O8fRfrdHiKYfSdqH5gbOaejm7H4Oy9/K3nuuBfTfqNTh6gqUnFrh+xHRw3HZdY8LeMqfFxTdFOtgs2f1NMnPpn1ysWroHRbTdW9Ddo8QbNsu0d1Nl16rYQPJ3lNzNNwta8X+LqfBsgw+uR/t0x/e87N+TtuRRYxz1yt3l972sbmcuh6fFXiOlwdPmPMvdalSH3nkbzs3qf5NlxT639Yq8XVNWs6ThoFmsbs1o2H87rD9S+oVOIqOq1XF73ZJ2GwA2A6LyrcpqVsSX4mBVVbplsnughCFbKYIQtm8KeD6vGEPM06E3qEXd1FMbnvgd8Lw97WJmcuh7jjdI7K1NT5H0b6RW4qoKVFmp1pOGtH6nO2H/gvugrr30n6NR4WkGUWaWi53Lj+pxySuQMwPReaKo9srrJolvU911N7BGa6rf0GhCFeM8Ft32cialYdWN/krUVt32c/iVj0Yz+4qpXeHd3xLmH+JZ3wU3yNF8o06742Qw6rFDzpsFzB1YczTbojlRee6baYNzupFQm3sgHr1Wwj7neU3N03CTPNnbogDRqvhHN2jsk5+mwVcsZ3ygF/p+6FPPPZCAyvaADGVjpGTe/qkxhBkhXVOoQLoBVrYt6KqbQRJylS8ubKKjSTIuEAtRmNpWWoABIsU9YiN4hYqbSDJsEBVG8zf1SqmDaydXzYunSMCDZAUxoi4utU8XeFxxoDmnTXaIa44cLnQ75g7StmcwkyAsj3giAvccjo3I5q6kckbZGq1yaH574vhn0nup1Glj2mHNOQf/brEuz+J/C1Pi2ebyVQIp1P+rurc+my5D9S4CpQqGlVbpeP2I2c07g9V0dLVtnTkvI5mro3QLzbzPMm1xBBBgi4IsQdiCkhXCmbjwX2h8RToOY9oq1QIpVHH5qN/MR7Tv1Wi8XxL6j3VKji97jLnHJP/ALZelY6lIH1VZKZjFVWJa5ZdVSPRGvW6IeRCpzSMqUAKmtJIABJJgAXJJwANyvX9J+l1eJqClRYXuOejR+pzsNHddf8ACfgqjwgDzFbiN3xZnUUwcdNWT2wq09SyFNd/ItU9K+ZdN3M1vwl9nh8tbjB3bQ/g1T/1/fcLp9Cm0NAgAAQAAAABgAbBFI6c2UVGEmRhYk0z5Vu43YYGRNs0QcZjaVxZmB6LtzniI3iFxJmB6LVwj4/L1MnGd7PP0GhCFsGIC2/7N/xav/Bv8lagtu+zr8SsP6Gf3FVK7w7u+Jcw/wASzvgpvtYRi3oiiJF7+qmkNObIqjUbXXMHViqOIJAwsrmiJi8JMeAIOVjawgzFkA6Rk3unWtEW9E6pkQLpUvLmyAqkARe5WIuMxtKqo2TIuFkDxEbxCAegdAheflHohAZTVBt1Sa3Tc+lkzSi/RIO1WxugBw1Y26ptfpsUidGLymKeq6AnlHPuqc/VYKebt7KizTdAJvlzv0Q5uq49LoHnzaEF2m3ugGKoFuikUyL9FQpTfqpFWbdUA3O1WHrdfI8ReH6XFU9FQQ8Xp1GiXMP+Wncf5gr67hov+8rlnjvx4as8PwroZdtSqPz9W0zs3+rfa2bFNHI56ZNFTjyK9TJGyNfaaovDmajxvD8uo+nqa8scWlzDqaY6FYV4mOjC9VN4K6ZjrpZd5yj22W6bi0IQpDwS5oOV9Hwv4cPGVxS5jabYkknzEbhjfzO/jK8CbHkEEEggyCDBBGCDsVHIxXNVEWykkT0a5Fcl05Hdvon0mhwtLk0GaQfvON3PP6nu3P8AG0L6DRpufSy554S8eC1LizBwytse1Ubf8v36roTH6/TIIvK5iohkjfaT78zqqeaOVl493LkNw1XHymKmmx2SJ02F0xT1X6qAsE8si/uuKMwPRdr5s29lxRmB6Lawj4/L1MPGd7PP0KQhC2DEBbf9nBirWPRjf5K1Bbd9nAmrWHVjf5KqV3h3d8S5h/iWd8FN8cdVh8oa7TY+tkEabi6A3Vc22XMHViNMuuN1Rqg29kjU026JmlF/dAJrdNz8Id58bdUB2qyD5MXlANr9Nip5Rz7qgzVdTzdvZAXzx3QlyB1TQGNryTBNldQaRIsqeRFolY6Vjf5QDpDVm6l7yDAwqrXx8KqZEXz3QBoETvEqKbiTBuFMGd4lZahEWz2QE1fLiydNuoSbpUbTPylVzbHZAJ1QgwDZVxBbTaXkhoaCS4mAAMkk2AVsIi8SuRfan9bqmv8A6QEtpMa1zxjW4jUC7qACIHWT0U0EKyvyoQVEyQszKYvHPjl3FTQoEtoYc7Bq/wDxnbffotIQhb8cTY25WnPSyuldmcCbXRhJbB4W8J1uNdLfJSB81Vwt/wAWD87u225wvTnoxMzlseWRueuVqXPl0nz/AJVrt30nwzw1CiaApA03CKheJNTu53XpERtC5x4x8JO4RxqU5fw5NnZNOcNfHwd/VR09eyV2Xdy+ZJU4c+JudNU4/I1hCEK+Z4LZfCvjCrwhDHTUo/p3Z3pk/wBuPTK1pCjkibI3K5LoSRSvidmYtlO/fSfqFLiaYq03B7cWsR2cNj2KzveQYGFwj6P9XrcK/mUnaT+YG7Xjo5u/89F13wr4ro8Y3TZlYDzU3HPdh/MPkbrAqqF0O03VvT6nRUleybZdo7r9D7zmCJ3iVxJmB6LtABneJXFmYHoreEfH5epTxnezz9CkIQtgxAW3fZ1+JWPRjP7itRW3/Zv+LV/4Nn9yqld4d3fEuYf4lnfBTe6Z1ZulUOmwsqrXx8IomBf5XMHVjYwEScrGKhJibIqAzaY7LK4iNpQE1G6RIsUqXmzdKlm+O6da8R8IBVHFpgWCsMETvEopERfPdYiDO8SgDnHr/CS9GodR8IQGJtMi52VPdqsPVLmzaMo06L526IAYdOUnMLjIwnGvtHujmabZQFcwRG+FDGFtzhPlbz3Rr1Wx8oAf5sbJsdpsUvud59kadV8bdUAnUybhad4/8Ijjf96jbiGtjSbCq0SQ2dnCTB9jsRuXNi0YRytN5mF7jkdG7M0jkjbI3K4/Nlak5ji1wLXNJDmkEEEZBBwVC7l4n8H0OPOszSrAfiNAOobB7fzR1sVg8OeBeH4J4qOJr1R91zgGtZ3ay8HuSe0LXTEI8l138jHXDZM9k3czVfB/2fmpFbjAWU7FtG4e/u/dg7Z9F1ChwoYAGtDWNjS1oAAA2AGFl5eq+JRzdo7LLmnfKt3GtDAyFLNG9+qwWN1JulzXgOa4QQRqBG4I6K9Gm+fhH3+0e6hJjlPjPwaeHmvQBdw+XNuXUvXqzvtv1WnL9DE6fKRI39+y5t408EFgPEcM2af3qlIZZ1czq3tt6Y26KvzbEm/mYVdh2X/pEmnFP0aEhCFrmMCqnULSHNJa4GQQSCD1BGFKF8B0zwp4/DwKPFkNdENrYa7tU/Se+PRaezA9F8NfdUMVOyJzlZxJ5ql8rWo/hf8AP+AhCFOVwW3fZz+JWHVjP7itRW3fZyYqVj0Y3+Sqld4d3fEuYf4lnfBTfGDTcoeNVwiddsfKNWi2d+i5g6sptQCxyoFMgztlPl6rzEo5s2jNkA3u1WCTPLndGjTfPwj7/aPdAJ7dVwrFQRG+FOvTbPwjlbz3QE8koVf6jt8oQFOpgXGyhjtVj6qWEzeYWSqIFvhAJ504TawOEnKKN8/KioTNsdkA+YZjbCp7A0SMqoEbTCxUyZvjugKZ5s7JPdpsE61sW9E6QkX+UA20wbqG1CbHdS8mbTCzPAi0T2QEvbpuPRJg1ZSpXN/lOtbHwgE55aYGFZpiJ3yimBF891iBM7xKApjtVim/y43VVQALZ7KaN5n5QDY3VcqTUIMeyKtjbHZZGgRtKA5/448Dzq4jhW+bNSkPzdXUx16t32vY81K/QtMmbzHdah448GNrzX4cBtbL2CAKvfs/vvv1WvRV9tiTdz/ZjV2HZryRb+X6OUoTqMLSWuBBBIIIggjIIOCktowgX3V8JfdX0+AhCEALb/s4/Fqjqxv8lai0SQAJJsALknoBuui+C/orqFJ9SoNNSpEN3a0TE9CZNvRUsQe1sCou9f2X8Njc6oaqJon6NleNOEMGq5U0b5+UVbG3wuaOoB1QiwwFZpgX3ynTAi8T3WFpM7wgKY7VYpv8uN1VUQLZ7KaN5m/qgGxmq5UmoZjbCVUkG2OyygCNphAHICSw6j1PyhAZnvBEDKimNJk2QKUX6Jl2qw9UAVRqxdVTcAIOVIOjN5QWaroCdBmYtMrJUcCIFylzdvZIM03QBS8ubJVG6jIumTrxaEB2mx9UBTXgCDlY2MIMkWTNKb9VRq6rdUAVTqEC6KR05skG6bn0QRqxZAS9hJkYWQvERvEJCppt0U8rf3QBTaQZNgnV82Lpl+qyQ8mbygHTdpEGxUOYSZiyot1XCYqxb2QDe8EQMqKY03NkxT036ILtVhbdAav4y8Is4wGrShtcDOBUjDX9+jv/AA5LxXDvpvdTe0se0w5psQV+ggdNjdfA8VeFWca3UIZWA8j+v9L4y35H7g6dFXLHsP8Ad6f0Zddh6S7cfvdf7OLr7qbvCPFtfpdRcb5aNYPo4WHvC2z6X4IqOh3EO5bf0thzz6n7rfla76qFjcyuQxGUkz3ZUavQ1NjC4gAEk4ABJPoBlbP9J8F1qkOq/wC03pYvPthvv+y3T6b9Io0RFFgZ+pxu53q43PovcH6bLLnxRy6Rpb5mvT4S1usq3+Sbu/seH6V9I4fhx/tsAfEFx8zj1823oLL2MYQZOE+VN/dUamq3VZbnuct3LdTWYxrEs1LIFU6sXRSOmxskBpuboI1XHovJ6JewkyMLI54IjdIVNNuinlRf3QBTbpMmwTq+bF0y/VZIeTN5QDpuAEGxUFhmYtMqizVdPm7eyAvmjr/KSx8g9UIAFUm3VNzdNx6XVvYAJGVjpHUYN0A2jVnbokX6bBOr5cWVU2giTcoBcoZ90g/VYqdZmNphZKjQBIsUBLhoxv1Ta3Vc+iVLzZulVMGBZABqkW6KjSAv0VMYCJOViY8kwcICmu1WPrZDjpx8p1RpEiyKQ1ZugAU9Vzup5px7JVHEGBhZSwRO8SgJczTcJN8+duiVNxJg3CdXy4sgBztNgmKQN/dFNsiTdQ55BibIBipqt1Tc3Tcel1T2ACRlRSOo3ugG0arn4SNTTYbJ1TpxZVTYCJOUAjSAv7pB+qxUh5mJtMLJUbAkWKAl3kxv1TazVcpUvNM3SqOgwLBAHNIt7KjT03GyoMETvErFTeSYOEBTTqsfhDjpsPW6dUacWRSGrN0ACnqv1U80m3sk95BgYWVzABO6AlzNNwk3z526JU3SYN06vlxZABfpsE+UM+6dNoIk3Kxl5mNphAPnnshZeUOiEB//2Q==" },
-      { name: "Android Studio", icon: "https://cdn.simpleicons.org/androidstudio/3DDC84" },
-      { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
+      { name: "VS Code", icon: "https://cdn.simpleicons.org/visualstudiocode/007ACC", color: "#007ACC" },
+      { name: "Android Studio", icon: "https://cdn.simpleicons.org/androidstudio/3DDC84", color: "#3DDC84" },
+      { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E", color: "#F24E1E" },
     ]
   }
 ];
@@ -162,7 +153,7 @@ const projects = [
       { name: "Socket.IO", icon: "https://cdn.simpleicons.org/socketdotio/white" },
       { name: "WebRTC", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webrtc/webrtc-original.svg" },
       { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/47A248" },
-      { name: "AWS", icon: "https://cdn.simpleicons.org/amazonaws/FF9900" },
+      { name: "AWS", icon: "https://cdn.simpleicons.org/amazonwebservices/FF9900" },
       { name: "JWT", icon: "https://jwt.io/img/pic_logo.svg" }
     ],
     github: "https://github.com/ngophuc29/newJourney",
@@ -312,7 +303,7 @@ export default function App() {
     <div className="min-h-screen bg-themeBg text-themeText font-sans selection:bg-purple-500/30">
 
       {/* NAVBAR */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-themeCard/90 backdrop-blur-md border-b border-themeBorder py-4' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'nav-glass border-b border-themeBorder py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollTo('home')}>
@@ -362,7 +353,7 @@ export default function App() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-themeCard border-b border-themeBorder py-4 px-6 flex flex-col gap-4 shadow-xl">
+          <div className="md:hidden absolute top-full left-0 w-full nav-glass border-b border-themeBorder py-4 px-6 flex flex-col gap-4 shadow-xl">
             {['ABOUT', 'SKILLS', 'PROJECTS', 'CONTACT'].map((item) => (
               <button
                 key={item}
@@ -390,7 +381,8 @@ export default function App() {
 
       <main>
         {/* HERO SECTION */}
-        <section id="home" className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between min-h-screen">
+        <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between min-h-screen">
+          <div className="grid-overlay" />
 
           <div className="w-full md:w-1/2 z-10 flex flex-col items-start gap-4">
             <h3 className="text-xl md:text-2xl font-medium text-themeTextTitle flex items-center gap-2">
@@ -452,7 +444,8 @@ export default function App() {
         </section>
 
         {/* ABOUT SECTION */}
-        <section id="about" className="py-20 px-6 max-w-7xl mx-auto">
+        <section id="about" className="relative py-20 px-6 max-w-7xl mx-auto">
+          <div className="grid-overlay" />
           <SectionHeading title="About" highlight="Me" />
 
           <div className="flex flex-col md:flex-row items-center gap-12">
@@ -488,6 +481,7 @@ export default function App() {
 
         {/* SKILLS SECTION */}
         <section id="skills" className="py-20 px-6 max-w-7xl mx-auto relative">
+          <div className="grid-overlay" />
           {/* Decorative background glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -500,10 +494,14 @@ export default function App() {
                   {skillGroup.category} <span className="text-purple-600 font-mono">(*)</span>
                 </h4>
                 <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 w-full max-w-lg">
-                  {skillGroup.items.map((skill, sIdx) => (
+                  {skillGroup.items.map((skill: any, sIdx) => (
                     <div
                       key={sIdx}
-                      className="group flex flex-col items-center justify-center p-3 h-24 rounded-2xl bg-themeCard border border-themeBorder hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 cursor-default"
+                      className="skill-card group flex flex-col items-center justify-center p-3 h-24 rounded-2xl bg-themeCard border border-themeBorder transition-all duration-300 cursor-default"
+                      style={{
+                        '--brand-color': skill.color || '#a855f7',
+                        '--brand-color-glow': (skill.color || '#a855f7') + '40'
+                      } as React.CSSProperties}
                     >
                       <img
                         src={skill.icon}
@@ -520,7 +518,8 @@ export default function App() {
         </section>
 
         {/* PROJECTS SECTION */}
-        <section id="projects" className="py-20 px-6 max-w-7xl mx-auto">
+        <section id="projects" className="relative py-20 px-6 max-w-7xl mx-auto">
+          <div className="grid-overlay" />
           <SectionHeading title="My" highlight="Projects" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -610,7 +609,8 @@ export default function App() {
         </section>
 
         {/* CONTACT SECTION */}
-        <section id="contact" className="py-20 px-6 max-w-7xl mx-auto">
+        <section id="contact" className="relative py-20 px-6 max-w-7xl mx-auto">
+          <div className="grid-overlay" />
           <SectionHeading title="Contact" highlight="" />
 
           <div className="text-center mb-12">
@@ -652,7 +652,7 @@ export default function App() {
             </div>
 
             {/* Right Form */}
-            <div className="w-full md:w-1/2 bg-themeCard/60 backdrop-blur-xl p-8 rounded-3xl border border-themeBorder shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative overflow-hidden">
+            <div className="w-full md:w-1/2 card-glass p-8 rounded-3xl border border-themeBorder shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative overflow-hidden">
               {/* Decorative background glows inside card */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl pointer-events-none"></div>
@@ -676,7 +676,7 @@ export default function App() {
                       value={formData.name}
                       onChange={handleFormChange}
                       placeholder="Enter your Name"
-                      className="w-full bg-themeInput/60 border border-themeBorder rounded-xl pl-12 pr-4 py-3.5 text-themeTextTitle placeholder:text-themeTextMuted/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all"
+                      className="w-full bg-themeInput border border-themeBorder rounded-xl pl-12 pr-4 py-3.5 text-themeTextTitle placeholder:text-themeTextMuted/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all"
                       required
                     />
                   </div>
@@ -689,12 +689,12 @@ export default function App() {
                       <Mail size={18} />
                     </div>
                     <input
-                      type="email"
+                      type="type"
                       name="email"
                       value={formData.email}
                       onChange={handleFormChange}
                       placeholder="example@gmail.com"
-                      className="w-full bg-themeInput/60 border border-themeBorder rounded-xl pl-12 pr-4 py-3.5 text-themeTextTitle placeholder:text-themeTextMuted/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all"
+                      className="w-full bg-themeInput border border-themeBorder rounded-xl pl-12 pr-4 py-3.5 text-themeTextTitle placeholder:text-themeTextMuted/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all"
                       required
                     />
                   </div>
@@ -712,7 +712,7 @@ export default function App() {
                       value={formData.message}
                       onChange={handleFormChange}
                       placeholder="Enter your Message"
-                      className="w-full bg-themeInput/60 border border-themeBorder rounded-xl pl-12 pr-4 py-3.5 text-themeTextTitle placeholder:text-themeTextMuted/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all resize-none"
+                      className="w-full bg-themeInput border border-themeBorder rounded-xl pl-12 pr-4 py-3.5 text-themeTextTitle placeholder:text-themeTextMuted/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all resize-none"
                       required
                     ></textarea>
                   </div>
@@ -754,13 +754,13 @@ export default function App() {
           </div>
 
           <div className="flex gap-6 mb-10">
-            <a href={personalInfo.github} className="text-themeTextMuted hover:text-themeTextTitle transition-colors bg-themeCard p-3 rounded-full hover:bg-purple-600">
+            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-themeTextMuted hover:text-themeTextTitle transition-colors bg-themeCard p-3 rounded-full hover:bg-purple-600">
               <FaGithub size={20} />
             </a>
-            <a href={personalInfo.linkedin} className="text-themeTextMuted hover:text-themeTextTitle transition-colors bg-themeCard p-3 rounded-full hover:bg-purple-600">
+            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-themeTextMuted hover:text-themeTextTitle transition-colors bg-themeCard p-3 rounded-full hover:bg-purple-600">
               <FaLinkedin size={20} />
             </a>
-            <a href={`mailto:${personalInfo.email}`} className="text-themeTextMuted hover:text-themeTextTitle transition-colors bg-themeCard p-3 rounded-full hover:bg-purple-600">
+            <a href={`mailto:${personalInfo.email}`} target="_blank" rel="noopener noreferrer" className="text-themeTextMuted hover:text-themeTextTitle transition-colors bg-themeCard p-3 rounded-full hover:bg-purple-600">
               <Mail size={20} />
             </a>
           </div>
