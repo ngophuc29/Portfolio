@@ -1,17 +1,17 @@
 import  { useState, useEffect } from 'react';
 import {
-  
   Mail,
   ExternalLink,
   Download,
   Menu,
   X,
   Moon,
-   
+  Sun,
   Globe,
   Layout,
   Send,
- 
+  User,
+  MessageSquare,
 } from 'lucide-react';
 
 import { FaLinkedin } from "react-icons/fa";
@@ -20,13 +20,13 @@ import { FaGithub } from "react-icons/fa";
 const personalInfo = {
   name: "Ngo Quang Phuc",
   shortName: "Phuc.",
-  role: "Frontend Developer",
+  role: "Frontend Developer | FullStack Developer",
   tagline: "I build scalable UI systems and responsive applications.",
   email: "ngophuc2911@gmail.com",
   phone: "0962447792",
   github: "https://github.com/ngophuc29",
   linkedin: "https://www.linkedin.com/in/phuc-ngo-2685493a5/?trk=opento_sprofile_topcard", // Add your linkedin
-  about: "Frontend Developer with hands-on experience in React.js and Next.js, seeking an opportunity to contribute to real-world product development. Strong focus on building scalable UI systems, responsive design, performance optimization, and SEO-friendly applications. Passionate about clean code, user experience, and continuous growth toward a professional Frontend Engineer role.",
+  about: "Frontend Developer | Full-Stack oriented, with hands-on experience in React.js, Next.js, Node.js, and Express.js. Focused on building scalable, responsive, and SEO-friendly web applications with strong attention to user experience and performance. Experienced in API integration and end-to-end development across both frontend and backend layers. Eager to contribute to product-driven teams and continuously grow into a professional Full-Stack Engineer.",
   avatar: "/avatardeptrai.jpg" // Use avatar from public folder
 };
 
@@ -165,8 +165,8 @@ const projects = [
       { name: "AWS", icon: "https://cdn.simpleicons.org/amazonaws/FF9900" },
       { name: "JWT", icon: "https://jwt.io/img/pic_logo.svg" }
     ],
-    github: "https://github.com/ngophuc29/ZaloApp.git",
-    live: "https://chat.zalo.me/"
+    github: "https://github.com/ngophuc29/newJourney",
+    live: "https://new-journey-j9q5.vercel.app/"
   },
   {
     id: 3,
@@ -203,7 +203,7 @@ const projects = [
 const SectionHeading = ({ title, highlight }: any) => (
   <div className="flex items-center gap-4 mb-12">
     <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-purple-600/50"></div>
-    <h2 className="text-3xl md:text-4xl font-bold text-white">
+    <h2 className="text-3xl md:text-4xl font-bold text-themeTextTitle">
       <span className="text-purple-500 font-mono text-xl mr-2">&lt;</span>
       {title} <span className="text-purple-500">{highlight}</span>
       <span className="text-purple-500 font-mono text-xl ml-2">/&gt;</span>
@@ -215,6 +215,19 @@ const SectionHeading = ({ title, highlight }: any) => (
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        return savedTheme;
+      }
+    }
+    return 'dark'; // default theme is dark
+  });
+  
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -223,6 +236,69 @@ export default function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus({ type: 'error', message: 'Vui lòng điền đầy đủ các thông tin.' });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatus({ type: null, message: '' });
+
+    // Read key from import.meta.env
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "8a6af768-3714-48d6-b88f-84ccf3b4397a";
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Contact Form Submission from ${formData.name}`,
+          from_name: "Portfolio Contact Form"
+        })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setStatus({ type: 'success', message: 'Cảm ơn bạn! Tin nhắn của bạn đã được gửi thành công.' });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus({ type: 'error', message: data.message || 'Có lỗi xảy ra khi gửi tin nhắn.' });
+      }
+    } catch (err) {
+      setStatus({ type: 'error', message: 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối mạng của bạn.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const scrollTo = (id:any) => {
     const el = document.getElementById(id);
@@ -233,10 +309,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-gray-300 font-sans selection:bg-purple-500/30">
+    <div className="min-h-screen bg-themeBg text-themeText font-sans selection:bg-purple-500/30">
 
       {/* NAVBAR */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-md border-b border-purple-900/30 py-4' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-themeCard/90 backdrop-blur-md border-b border-themeBorder py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollTo('home')}>
@@ -252,7 +328,7 @@ export default function App() {
               <button
                 key={item}
                 onClick={() => scrollTo(item.toLowerCase())}
-                className="hover:text-purple-400 transition-colors tracking-widest"
+                className="hover:text-purple-400 transition-colors tracking-widest text-themeText hover:text-purple-400"
               >
                 {item}
               </button>
@@ -261,8 +337,12 @@ export default function App() {
 
           {/* Right Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <button className="p-2 rounded-full border border-gray-800 hover:border-purple-500 transition-colors text-gray-400 hover:text-white">
-              <Moon size={18} />
+            <button 
+              onClick={toggleTheme}
+              className="p-2 rounded-full border border-themeBorder hover:border-purple-500 transition-colors text-themeTextMuted hover:text-themeTextTitle"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <a
               href="/resume.pdf"
@@ -275,26 +355,35 @@ export default function App() {
           </div>
 
           {/* Mobile Toggle */}
-          <button className="md:hidden text-gray-300" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="md:hidden text-themeText" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-[#0a0a0a] border-b border-gray-800 py-4 px-6 flex flex-col gap-4 shadow-xl">
+          <div className="md:hidden absolute top-full left-0 w-full bg-themeCard border-b border-themeBorder py-4 px-6 flex flex-col gap-4 shadow-xl">
             {['ABOUT', 'SKILLS', 'PROJECTS', 'CONTACT'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollTo(item.toLowerCase())}
-                className="text-left py-2 hover:text-purple-400 tracking-widest"
+                className="text-left py-2 text-themeText hover:text-purple-400 tracking-widest"
               >
                 {item}
               </button>
             ))}
-            <a href="#" className="flex items-center justify-center gap-2 px-4 py-3 mt-2 rounded border border-purple-500 text-purple-400">
-              Resume <Download size={16} />
-            </a>
+            <div className="flex items-center justify-between gap-4 mt-2">
+              <button 
+                onClick={toggleTheme}
+                className="flex items-center gap-2 px-4 py-2.5 rounded border border-themeBorder text-themeTextMuted hover:text-themeTextTitle w-1/2 justify-center"
+              >
+                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+                {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+              </button>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-4 py-2.5 rounded border border-purple-500 text-purple-400 w-1/2">
+                Resume <Download size={16} />
+              </a>
+            </div>
           </div>
         )}
       </nav>
@@ -304,32 +393,32 @@ export default function App() {
         <section id="home" className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between min-h-screen">
 
           <div className="w-full md:w-1/2 z-10 flex flex-col items-start gap-4">
-            <h3 className="text-xl md:text-2xl font-medium text-gray-200 flex items-center gap-2">
+            <h3 className="text-xl md:text-2xl font-medium text-themeTextTitle flex items-center gap-2">
               Hi 👋 My name is
             </h3>
-            <div className="flex items-center gap-4 text-sm text-gray-400">
-              <a href={`mailto:${personalInfo.email}`} className="hover:text-white">{personalInfo.email}</a>
-              <span className="text-gray-600">•</span>
-              <a href={`tel:${personalInfo.phone}`} className="hover:text-white">{personalInfo.phone}</a>
+            <div className="flex items-center gap-4 text-sm text-themeTextMuted">
+              <a href={`mailto:${personalInfo.email}`} className="hover:text-themeTextTitle">{personalInfo.email}</a>
+              <span className="text-themeTextMuted/60">•</span>
+              <a href={`tel:${personalInfo.phone}`} className="hover:text-themeTextTitle">{personalInfo.phone}</a>
             </div>
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 drop-shadow-[0_0_15px_rgba(168,85,247,0.3)]">
               {personalInfo.shortName}
             </h1>
             <p className="text-xl md:text-2xl mt-2 font-medium">
-              I'm a <span className="text-gray-100">{personalInfo.role}.</span>
+              I'm a <span className="text-themeTextTitle">{personalInfo.role}.</span>
             </p>
-            <p className="text-lg text-gray-400 max-w-md">
+            <p className="text-lg text-themeTextMuted max-w-md">
               {personalInfo.tagline}
             </p>
 
             <div className="flex gap-4 mt-8">
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white hover:scale-110 transition-all">
+              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-themeTextMuted hover:text-themeTextTitle hover:scale-110 transition-all">
                 <FaGithub size={28} />
               </a>
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white hover:scale-110 transition-all">
+              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-themeTextMuted hover:text-themeTextTitle hover:scale-110 transition-all">
                 <FaLinkedin size={28} />
               </a>
-              <a href={`mailto:${personalInfo.email}`} className="text-gray-400 hover:text-white hover:scale-110 transition-all">
+              <a href={`mailto:${personalInfo.email}`} className="text-themeTextMuted hover:text-themeTextTitle hover:scale-110 transition-all">
                 <Mail size={28} />
               </a>
             </div>
@@ -350,7 +439,7 @@ export default function App() {
               </div>
 
               {/* Inner Avatar Glow */}
-              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-tr from-purple-900 to-[#0a0a0a] border border-purple-500/50 shadow-[0_0_40px_rgba(168,85,247,0.4)] flex items-center justify-center overflow-hidden z-10">
+              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-tr from-purple-900/40 to-themeCard border border-purple-500/50 shadow-[0_0_40px_rgba(168,85,247,0.4)] flex items-center justify-center overflow-hidden z-10">
                 {/* Insert User Avatar */}
                 <img
                   src={personalInfo.avatar}
@@ -376,10 +465,10 @@ export default function App() {
             </div>
 
             <div className="w-full md:w-2/3 border-l-2 border-purple-600 pl-6 md:pl-10">
-              <h3 className="text-3xl font-bold text-white mb-4 flex items-center gap-2">
+              <h3 className="text-3xl font-bold text-themeTextTitle mb-4 flex items-center gap-2">
                 Hey there! 👋
               </h3>
-              <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
+              <div className="space-y-4 text-themeTextMuted text-lg leading-relaxed">
                 <p>
                   I'm {personalInfo.name}. I build things on the internet — with a strong focus on performance, interactivity, and getting the details right.
                 </p>
@@ -389,7 +478,7 @@ export default function App() {
                 <p>
                   I enjoy working on systems that aren't static. Real-time updates, complex UIs, and applications with lots of moving parts. I naturally go deeper into problems — optimizing, refining, and chasing that "this feels right" moment.
                 </p>
-                <p className="text-gray-200">
+                <p className="text-themeTextTitle">
                   If you're building something interesting, challenging, or technically demanding... I'd love to be part of it 😄
                 </p>
               </div>
@@ -407,21 +496,21 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
             {skills.map((skillGroup, idx) => (
               <div key={idx} className="relative z-10 flex flex-col items-center md:items-start">
-                <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <h4 className="text-xl font-bold text-themeTextTitle mb-6 flex items-center gap-2">
                   {skillGroup.category} <span className="text-purple-600 font-mono">(*)</span>
                 </h4>
                 <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 w-full max-w-lg">
                   {skillGroup.items.map((skill, sIdx) => (
                     <div
                       key={sIdx}
-                      className="group flex flex-col items-center justify-center p-3 h-24 rounded-2xl bg-[#080808] border border-gray-800/80 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 cursor-default"
+                      className="group flex flex-col items-center justify-center p-3 h-24 rounded-2xl bg-themeCard border border-themeBorder hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 cursor-default"
                     >
                       <img
                         src={skill.icon}
                         alt={skill.name}
                         className="w-8 h-8 mb-3 opacity-90 group-hover:opacity-100 transition-all transform group-hover:scale-110 object-contain"
                       />
-                      <span className="text-[10px] text-gray-400 group-hover:text-gray-200 font-medium text-center leading-tight">{skill.name}</span>
+                      <span className="text-[10px] text-themeTextMuted group-hover:text-themeTextTitle font-medium text-center leading-tight">{skill.name}</span>
                     </div>
                   ))}
                 </div>
@@ -438,7 +527,7 @@ export default function App() {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-[#0a0a0a] rounded-xl overflow-hidden border border-gray-800 hover:border-purple-500/50 hover:shadow-[0_10px_30px_rgba(168,85,247,0.15)] transition-all duration-300 group flex flex-col"
+                className="bg-themeCard rounded-xl overflow-hidden border border-themeBorder hover:border-purple-500/50 hover:shadow-[0_10px_30px_rgba(168,85,247,0.15)] transition-all duration-300 group flex flex-col"
               >
                 {/* Image Box */}
                 <div className="relative h-48 overflow-hidden bg-gray-900 border-b border-gray-800">
@@ -460,10 +549,10 @@ export default function App() {
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
+                      <h3 className="text-xl font-bold text-themeTextTitle group-hover:text-purple-400 transition-colors">
                         {project.title}
                       </h3>
-                      <span className="text-xs text-gray-500 mt-1 block">{project.type}</span>
+                      <span className="text-xs text-themeTextMuted mt-1 block">{project.type}</span>
                     </div>
 
                     <div className="flex items-center gap-3">
@@ -478,7 +567,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <p className="text-sm text-gray-400 mb-6 flex-1">
+                  <p className="text-sm text-themeTextMuted mb-6 flex-1">
                     {project.description}
                   </p>
 
@@ -486,23 +575,23 @@ export default function App() {
                     {/* Links */}
                     <div className="flex justify-end gap-3 mb-4">
                       {project.github && (
-                        <a href={project.github} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors" title="Xem mã nguồn">
+                        <a href={project.github} target="_blank" rel="noreferrer" className="text-themeTextMuted hover:text-themeTextTitle transition-colors" title="Xem mã nguồn">
                           <FaGithub size={18} />
                         </a>
                       )}
                       {project.overview && (
-                        <a href={project.overview} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors" title="Xem ảnh tổng quát dự án">
+                        <a href={project.overview} target="_blank" rel="noreferrer" className="text-themeTextMuted hover:text-themeTextTitle transition-colors" title="Xem ảnh tổng quát dự án">
                           <Layout size={18} />
                         </a>
                       )}
                       {project.live && (
-                        <a href={project.live} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors" title="Link demo">
+                        <a href={project.live} target="_blank" rel="noreferrer" className="text-themeTextMuted hover:text-themeTextTitle transition-colors" title="Link demo">
                           <ExternalLink size={18} />
                         </a>
                       )}
                     </div>
                     {/* Tech Stack Tags */}
-                    <div className="flex flex-wrap gap-2.5 pt-4 border-t border-gray-800">
+                    <div className="flex flex-wrap gap-2.5 pt-4 border-t border-themeBorder">
                       {project.tech.map((t, i) => (
                         <img
                           key={i}
@@ -528,7 +617,7 @@ export default function App() {
             <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 mb-4">
               Let's collaborate!
             </h3>
-            <p className="text-gray-400">
+            <p className="text-themeTextMuted">
               Contact me to discuss your web development needs <br className="hidden md:block" />
               or just to say hello. 😉
             </p>
@@ -547,53 +636,103 @@ export default function App() {
               <div className="relative w-64 h-64 border border-dashed border-gray-700 rounded-full flex items-center justify-center animate-[spin_30s_linear_infinite]">
 
                 {/* Orbiting Icons */}
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 bg-[#0a0a0a] border border-gray-700 rounded-full flex items-center justify-center animate-[spin_30s_linear_infinite_reverse]">
-                  <Mail size={16} className="text-gray-300" />
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 bg-themeCard border border-themeBorder rounded-full flex items-center justify-center animate-[spin_30s_linear_infinite_reverse]">
+                  <Mail size={16} className="text-themeText" />
                 </div>
-                <div className="absolute top-1/2 -right-4 -translate-y-1/2 w-10 h-10 bg-[#0a0a0a] border border-gray-700 rounded-full flex items-center justify-center animate-[spin_30s_linear_infinite_reverse]">
-                  <FaLinkedin size={16} className="text-gray-300" />
+                <div className="absolute top-1/2 -right-4 -translate-y-1/2 w-10 h-10 bg-themeCard border border-themeBorder rounded-full flex items-center justify-center animate-[spin_30s_linear_infinite_reverse]">
+                  <FaLinkedin size={16} className="text-themeText" />
                 </div>
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-10 h-10 bg-[#0a0a0a] border border-gray-700 rounded-full flex items-center justify-center animate-[spin_30s_linear_infinite_reverse]">
-                  <FaGithub size={16} className="text-gray-300" />
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-10 h-10 bg-themeCard border border-themeBorder rounded-full flex items-center justify-center animate-[spin_30s_linear_infinite_reverse]">
+                  <FaGithub size={16} className="text-themeText" />
                 </div>
-                <div className="absolute top-1/2 -left-4 -translate-y-1/2 w-10 h-10 bg-[#0a0a0a] border border-gray-700 rounded-full flex items-center justify-center animate-[spin_30s_linear_infinite_reverse]">
-                  <Globe size={16} className="text-gray-300" />
+                <div className="absolute top-1/2 -left-4 -translate-y-1/2 w-10 h-10 bg-themeCard border border-themeBorder rounded-full flex items-center justify-center animate-[spin_30s_linear_infinite_reverse]">
+                  <Globe size={16} className="text-themeText" />
                 </div>
               </div>
             </div>
 
             {/* Right Form */}
-            <div className="w-full md:w-1/2 bg-[#0a0a0a] p-8 rounded-2xl border border-gray-800 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <div className="w-full md:w-1/2 bg-themeCard/60 backdrop-blur-xl p-8 rounded-3xl border border-themeBorder shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative overflow-hidden">
+              {/* Decorative background glows inside card */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl pointer-events-none"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+              <form className="space-y-6 relative z-10" onSubmit={handleFormSubmit}>
+                {status.message && (
+                  <div className={`p-4 rounded-xl text-sm font-medium transition-all duration-300 animate-fadeIn ${status.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
+                    {status.message}
+                  </div>
+                )}
+                
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                  <input
-                    type="text"
-                    placeholder="Enter your Name"
-                    className="w-full bg-[#050505] border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-                  />
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-themeTextMuted mb-2">Name</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-themeTextMuted/70">
+                      <User size={18} />
+                    </div>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleFormChange}
+                      placeholder="Enter your Name"
+                      className="w-full bg-themeInput/60 border border-themeBorder rounded-xl pl-12 pr-4 py-3.5 text-themeTextTitle placeholder:text-themeTextMuted/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all"
+                      required
+                    />
+                  </div>
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                  <input
-                    type="email"
-                    placeholder="example@gmail.com"
-                    className="w-full bg-[#050505] border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-                  />
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-themeTextMuted mb-2">Email</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-themeTextMuted/70">
+                      <Mail size={18} />
+                    </div>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleFormChange}
+                      placeholder="example@gmail.com"
+                      className="w-full bg-themeInput/60 border border-themeBorder rounded-xl pl-12 pr-4 py-3.5 text-themeTextTitle placeholder:text-themeTextMuted/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all"
+                      required
+                    />
+                  </div>
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-2">Message</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Enter your Message"
-                    className="w-full bg-[#050505] border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none"
-                  ></textarea>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-themeTextMuted mb-2">Message</label>
+                  <div className="relative">
+                    <div className="absolute left-4 top-3.5 pointer-events-none text-themeTextMuted/70">
+                      <MessageSquare size={18} />
+                    </div>
+                    <textarea
+                      rows={4}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleFormChange}
+                      placeholder="Enter your Message"
+                      className="w-full bg-themeInput/60 border border-themeBorder rounded-xl pl-12 pr-4 py-3.5 text-themeTextTitle placeholder:text-themeTextMuted/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 focus:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all resize-none"
+                      required
+                    ></textarea>
+                  </div>
                 </div>
+
                 <button
-                  type="button"
-                  className="w-32 bg-transparent border border-gray-600 hover:border-purple-500 text-white rounded-lg px-6 py-3 flex items-center justify-center gap-2 hover:bg-purple-500/10 transition-all group"
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl py-3.5 font-bold shadow-[0_4px_20px_rgba(168,85,247,0.3)] hover:shadow-[0_4px_25px_rgba(168,85,247,0.55)] transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message <Send size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -602,31 +741,31 @@ export default function App() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-[#050505] border-t border-purple-900/30 pt-16 pb-8 relative overflow-hidden">
+      <footer className="bg-themeBg border-t border-themeBorder/50 pt-16 pb-8 relative overflow-hidden">
         {/* Wavy background decoration mimicking screenshot */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-[#050505] to-[#050505] pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/10 via-themeBg to-themeBg pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center relative z-10">
           <div className="mb-6 flex flex-col items-center">
             <div className="text-6xl font-black bg-clip-text text-transparent bg-gradient-to-b from-purple-500 to-pink-600 mb-2">
               P
             </div>
-            <p className="text-gray-300 font-medium">NgoQuangPhuc | Portfolio.</p>
+            <p className="text-themeText font-medium">NgoQuangPhuc | Portfolio.</p>
           </div>
 
           <div className="flex gap-6 mb-10">
-            <a href={personalInfo.github} className="text-gray-400 hover:text-white transition-colors bg-gray-900 p-3 rounded-full hover:bg-purple-600">
+            <a href={personalInfo.github} className="text-themeTextMuted hover:text-themeTextTitle transition-colors bg-themeCard p-3 rounded-full hover:bg-purple-600">
               <FaGithub size={20} />
             </a>
-            <a href={personalInfo.linkedin} className="text-gray-400 hover:text-white transition-colors bg-gray-900 p-3 rounded-full hover:bg-purple-600">
+            <a href={personalInfo.linkedin} className="text-themeTextMuted hover:text-themeTextTitle transition-colors bg-themeCard p-3 rounded-full hover:bg-purple-600">
               <FaLinkedin size={20} />
             </a>
-            <a href={`mailto:${personalInfo.email}`} className="text-gray-400 hover:text-white transition-colors bg-gray-900 p-3 rounded-full hover:bg-purple-600">
+            <a href={`mailto:${personalInfo.email}`} className="text-themeTextMuted hover:text-themeTextTitle transition-colors bg-themeCard p-3 rounded-full hover:bg-purple-600">
               <Mail size={20} />
             </a>
           </div>
 
-          <p className="text-gray-600 text-sm">
+          <p className="text-themeTextMuted/50 text-sm">
             © Copyright 2024-2026 {personalInfo.name}
           </p>
         </div>

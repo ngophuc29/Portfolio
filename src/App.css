@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-bg: #f8fafc; /* slate-50 */
+  --color-card: #ffffff;
+  --color-card-hover: #f1f5f9; /* slate-100 */
+  --color-text: #334155; /* slate-700 */
+  --color-text-muted: #64748b; /* slate-500 */
+  --color-text-title: #0f172a; /* slate-900 */
+  --color-border: #e2e8f0; /* slate-200 */
+  --color-input: #f8fafc; /* slate-50 */
+}
+
+.dark {
+  --color-bg: #050505;
+  --color-card: #0a0a0a;
+  --color-card-hover: #080808;
+  --color-text: #d1d5db; /* gray-300 */
+  --color-text-muted: #9ca3af; /* gray-400 */
+  --color-text-title: #ffffff;
+  --color-border: #1f2937; /* gray-800 */
+  --color-input: #050505;
+}
+
+/* Smooth transition for theme colors */
+body, nav, main, footer, div, section, p, h1, h2, h3, h4, h5, h6, span, button, input, textarea, a {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
