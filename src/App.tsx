@@ -27,7 +27,7 @@ const personalInfo = {
   github: "https://github.com/ngophuc29",
   linkedin: "https://www.linkedin.com/in/phuc-ngo-2685493a5/?trk=opento_sprofile_topcard", // Add your linkedin
   about: "Frontend Developer | Full-Stack oriented, with hands-on experience in React.js, Next.js, Node.js, and Express.js. Focused on building scalable, responsive, and SEO-friendly web applications with strong attention to user experience and performance. Experienced in API integration and end-to-end development across both frontend and backend layers. Eager to contribute to product-driven teams and continuously grow into a professional Full-Stack Engineer.",
-  avatar: "/avatardeptrai.jpg" // Use avatar from public folder
+  avatar: "/avatar1.jpg" // Use avatar from public folder
 };
 
 const skills = [
