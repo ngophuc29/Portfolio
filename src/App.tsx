@@ -20,13 +20,13 @@ import { FaGithub } from "react-icons/fa";
 const personalInfo = {
   name: "Ngo Quang Phuc",
   shortName: "Phuc.",
-  role: "Frontend Developer | FullStack Developer",
-  tagline: "I build scalable UI systems and responsive applications.",
+  role: "Fullstack Developer",
+  tagline: "I build robust backend systems, scalable UIs, and high-performance end-to-end applications.",
   email: "ngophuc2911@gmail.com",
   phone: "0962447792",
   github: "https://github.com/ngophuc29",
   linkedin: "https://www.linkedin.com/in/phuc-ngo-2685493a5/?trk=opento_sprofile_topcard", // Add your linkedin
-  about: "Frontend Developer | Full-Stack oriented, with hands-on experience in React.js, Next.js, Node.js, and Express.js. Focused on building scalable, responsive, and SEO-friendly web applications with strong attention to user experience and performance. Experienced in API integration and end-to-end development across both frontend and backend layers. Eager to contribute to product-driven teams and continuously grow into a professional Full-Stack Engineer.",
+  about: "Fullstack Developer with hands-on experience in React.js, Next.js, Node.js, and Express.js. Focused on building robust backend systems, scalable database models, and high-performance, SEO-friendly frontend interfaces. Experienced in API integrations, WebSockets, containerization (Docker), and automated CI/CD pipelines. Passionate about designing end-to-end system architectures, optimizing application performance, and contributing to product-focused development teams.",
   avatar: "/avatar1.jpg" // Use avatar from public folder
 };
 
@@ -125,7 +125,7 @@ const projects = [
     type: "Graduation Project",
     status: "LIVE",
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=800", // Placeholder for flight/travel
-    description: "An all-in-one travel booking platform supporting Flights, Bus Trips, and Tour Packages, including a customer-facing web application and an admin management dashboard.",
+    description: "An all-in-one travel booking platform supporting Flights, Bus Trips, and Tour Packages. Built as a fullstack-oriented solution integration with modular dashboard components and scalable server data mappings.",
     tech: [
       { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/white" },
       { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
@@ -142,7 +142,7 @@ const projects = [
     type: "Team Project",
     status: "LIVE",
     image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800", // Placeholder for chat
-    description: "A cross-platform real-time messaging application inspired by Zalo. It features secure user authentication, instant messaging, and a responsive UI tailored for both web and mobile experiences.",
+    description: "A real-time messaging application inspired by Zalo. Built with a full-stack architecture featuring a custom Node.js/Express server, MongoDB via Prisma ORM, Socket.IO for instant chat synchronization, and WebRTC for peer-to-peer audio/video streaming.",
     tech: [
       { name: "Vite", icon: "https://cdn.simpleicons.org/vite/646CFF" },
       { name: "ReactJS", icon: "https://cdn.simpleicons.org/react/61DAFB" },
@@ -165,7 +165,7 @@ const projects = [
     type: "Personal Project",
     status: "LIVE",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800", // Placeholder for e-commerce
-    description: "A scalable e-commerce platform built on a microservices architecture. It includes features like a secure payment gateway integration, seamless user checkout, and automated CI/CD pipelines.",
+    description: "A highly scalable e-commerce platform designed on a Node.js microservices architecture. Employs Docker for service containment, MoMo payment gateway integrations, Redis database caching, Cloudinary media storage, and fully automated Jenkins/GitHub Actions CI/CD pipelines.",
     tech: [
       { name: "Vite", icon: "https://cdn.simpleicons.org/vite/646CFF" },
       { name: "React.js", icon: "https://cdn.simpleicons.org/react/61DAFB" },
@@ -371,7 +371,7 @@ export default function App() {
                 {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
                 {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
               </button>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-4 py-2.5 rounded border border-purple-500 text-purple-400 w-1/2">
+              <a href="/CV_NgoQuangPhuc.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-4 py-2.5 rounded border border-purple-500 text-purple-400 w-1/2">
                 Resume <Download size={16} />
               </a>
             </div>
