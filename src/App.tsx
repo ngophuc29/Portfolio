@@ -16,6 +16,123 @@ import {
 
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import {
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiFramer,
+  SiNodedotjs,
+  SiExpress,
+  SiPostman,
+  SiFirebase,
+  SiGoogle,
+  SiMongodb,
+  SiMysql,
+  SiPostgresql,
+  SiRedis,
+  SiRedux,
+  SiReactquery,
+  SiSocketdotio,
+  SiDocker,
+  SiGooglecloud,
+  SiNetlify,
+  SiVercel,
+  SiGit,
+  SiGithub,
+  SiNpm,
+  SiVite,
+  SiSwagger,
+  SiYaml,
+  SiJson,
+  SiMarkdown,
+  SiApachefreemarker,
+  SiAndroidstudio,
+  SiFigma,
+  SiPrisma,
+  SiJsonwebtokens,
+  SiShadcnui,
+  SiApachekafka,
+  SiJenkins,
+  SiGithubactions,
+  SiCloudinary,
+  SiAxios,
+  SiWebrtc
+} from 'react-icons/si';
+import { GiBearFace } from 'react-icons/gi';
+import { DiAws } from 'react-icons/di';
+import { VscVscode } from 'react-icons/vsc';
+
+const iconMapping: { [key: string]: any } = {
+  "HTML": SiHtml5,
+  "CSS": SiCss,
+  "JavaScript": SiJavascript,
+  "TypeScript": SiTypescript,
+  "React.js": SiReact,
+  "ReactJS": SiReact,
+  "Next.js": SiNextdotjs,
+  "Tailwind CSS": SiTailwindcss,
+  "Framer Motion": SiFramer,
+  "Node.js": SiNodedotjs,
+  "Express.js": SiExpress,
+  "Express": SiExpress,
+  "REST API": SiPostman,
+  "Firebase": SiFirebase,
+  "Google Auth": SiGoogle,
+  "MongoDB": SiMongodb,
+  "MySQL": SiMysql,
+  "PostgreSQL": SiPostgresql,
+  "Firestore": SiFirebase,
+  "Redis": SiRedis,
+  "Redux": SiRedux,
+  "Zustand": GiBearFace,
+  "TanStack Query": SiReactquery,
+  "React Query": SiReactquery,
+  "Socket.io": SiSocketdotio,
+  "Socket.IO": SiSocketdotio,
+  "Docker": SiDocker,
+  "Google Cloud": SiGooglecloud,
+  "Netlify": SiNetlify,
+  "Vercel": SiVercel,
+  "Git": SiGit,
+  "GitHub": SiGithub,
+  "npm": SiNpm,
+  "Vite": SiVite,
+  "Postman": SiPostman,
+  "Swagger UI": SiSwagger,
+  "YAML": SiYaml,
+  "JSON": SiJson,
+  "Markdown": SiMarkdown,
+  "FreeMarker": SiApachefreemarker,
+  "VS Code": VscVscode,
+  "Android Studio": SiAndroidstudio,
+  "Figma": SiFigma,
+  "Prisma": SiPrisma,
+  "AWS": DiAws,
+  "JWT": SiJsonwebtokens,
+  "Shadcn UI": SiShadcnui,
+  "Microservices": SiApachekafka,
+  "Jenkins": SiJenkins,
+  "GitHub Actions": SiGithubactions,
+  "Cloudinary": SiCloudinary,
+  "Axios": SiAxios,
+  "WebRTC": SiWebrtc
+};
+
+const getIconColor = (color: string, theme: 'light' | 'dark') => {
+  if (!color) return '#a855f7';
+  const c = color.toLowerCase();
+  if (c === '#ffffff' || c === 'white') {
+    return theme === 'dark' ? '#ffffff' : '#09090b';
+  }
+  if (c === '#000000' || c === 'black' || c === '#010101' || c === '#181717') {
+    return theme === 'dark' ? '#ffffff' : '#09090b';
+  }
+  return color;
+};
 // --- DATA FROM CV ---
 const personalInfo = {
   name: "Ngo Quang Phuc",
@@ -336,7 +453,7 @@ export default function App() {
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <a
-              href="/resume.pdf"
+              href="/CV_NgoQuangPhuc.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 rounded border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition-all group"
@@ -494,23 +611,34 @@ export default function App() {
                   {skillGroup.category} <span className="text-purple-600 font-mono">(*)</span>
                 </h4>
                 <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 w-full max-w-lg">
-                  {skillGroup.items.map((skill: any, sIdx) => (
-                    <div
-                      key={sIdx}
-                      className="skill-card group flex flex-col items-center justify-center p-3 h-24 rounded-2xl bg-themeCard border border-themeBorder transition-all duration-300 cursor-default"
-                      style={{
-                        '--brand-color': skill.color || '#a855f7',
-                        '--brand-color-glow': (skill.color || '#a855f7') + '40'
-                      } as React.CSSProperties}
-                    >
-                      <img
-                        src={skill.icon}
-                        alt={skill.name}
-                        className="w-8 h-8 mb-3 opacity-90 group-hover:opacity-100 transition-all transform group-hover:scale-110 object-contain"
-                      />
-                      <span className="text-[10px] text-themeTextMuted group-hover:text-themeTextTitle font-medium text-center leading-tight">{skill.name}</span>
-                    </div>
-                  ))}
+                  {skillGroup.items.map((skill: any, sIdx) => {
+                    const IconComponent = iconMapping[skill.name];
+                    return (
+                      <div
+                        key={sIdx}
+                        className="skill-card group flex flex-col items-center justify-center p-3 h-24 rounded-2xl bg-themeCard border border-themeBorder transition-all duration-300 cursor-default"
+                        style={{
+                          '--brand-color': skill.color || '#a855f7',
+                          '--brand-color-glow': (skill.color || '#a855f7') + '40'
+                        } as React.CSSProperties}
+                      >
+                        {IconComponent ? (
+                          <IconComponent 
+                            size={32} 
+                            className="mb-3 transition-all transform group-hover:scale-110"
+                            style={{ color: getIconColor(skill.color, theme) }}
+                          />
+                        ) : (
+                          <img
+                            src={skill.icon}
+                            alt={skill.name}
+                            className="w-8 h-8 mb-3 opacity-90 group-hover:opacity-100 transition-all transform group-hover:scale-110 object-contain"
+                          />
+                        )}
+                        <span className="text-[10px] text-themeTextMuted group-hover:text-themeTextTitle font-medium text-center leading-tight">{skill.name}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -591,15 +719,27 @@ export default function App() {
                     </div>
                     {/* Tech Stack Tags */}
                     <div className="flex flex-wrap gap-2.5 pt-4 border-t border-themeBorder">
-                      {project.tech.map((t, i) => (
-                        <img
-                          key={i}
-                          src={t.icon}
-                          alt={t.name}
-                          title={t.name}
-                          className="w-5 h-5 object-contain opacity-80 hover:opacity-100 hover:scale-110 transition-all cursor-pointer"
-                        />
-                      ))}
+                      {project.tech.map((t, i) => {
+                        const IconComponent = iconMapping[t.name];
+                        const skillColor = skills.flatMap(g => g.items).find(item => item.name === t.name)?.color || '#a855f7';
+                        return IconComponent ? (
+                          <IconComponent
+                            key={i}
+                            size={20}
+                            title={t.name}
+                            className="opacity-80 hover:opacity-100 hover:scale-110 transition-all cursor-pointer"
+                            style={{ color: getIconColor(skillColor, theme) }}
+                          />
+                        ) : (
+                          <img
+                            key={i}
+                            src={t.icon}
+                            alt={t.name}
+                            title={t.name}
+                            className="w-5 h-5 object-contain opacity-80 hover:opacity-100 hover:scale-110 transition-all cursor-pointer"
+                          />
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
